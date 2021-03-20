@@ -12,6 +12,8 @@ app.use(cors())
 app.use(fileupload({
     useTempFiles:true
 }))
+//routes
+app.use('/user',require('./routers/userRouter'))
 
 //connect to mongo 
 mongoose.connect('mongodb://localhost:27017/ECOMapp', {
@@ -23,7 +25,6 @@ mongoose.connect('mongodb://localhost:27017/ECOMapp', {
     console.log('connected to mongodb')
 });
 
-//routing
 app.get ('/',(req,res) => {
     res.json({msg:"welcome anand"})
 })
