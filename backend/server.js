@@ -1,6 +1,6 @@
 require ('dotenv').config()
 const express = require ('express')
-const moongoose = require('mongoose')
+const mongoose = require('mongoose')
 const cors = require('cors')
 const fileupload = require("express-fileupload")
 const cookieparser = require ('cookie-parser')
@@ -14,13 +14,18 @@ app.use(fileupload({
 }))
 
 //connect to mongo 
-mongoose.connect(process.env.MONGODB_URL{
-    useNewUrlPhaser = true
-    useUnifiedToplogy = true
-    useCreateIndex = true
-},err =>{
-    if(err) throw err;
+mongoose.connect('mongodb://localhost:27017/ECOMapp', {
+    useNewUrlParser:true,
+    useUnifiedToplogy:true,
+    useCreateIndex:true,
+}) 
+.then(() =>{
     console.log('connected to mongodb')
+});
+
+//routing
+app.get ('/',(req,res) => {
+    res.json({msg:"welcome anand"})
 })
 
 //connecting to port
