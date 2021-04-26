@@ -13,7 +13,7 @@ app.use(fileupload({
     useTempFiles:true
 }))
 //routes
-app.use('/user',require('./backend/routers/userRouter'))
+app.use('/user', require('./routers/userRouter'))
 
 //connect to mongo 
 mongoose.connect('mongodb://localhost:27017/ECOMapp', {
@@ -24,11 +24,6 @@ mongoose.connect('mongodb://localhost:27017/ECOMapp', {
 .then(() =>{
     console.log('connected to mongodb')
 });
-
-app.get ('/',(req,res) => {
-    res.json({msg:"welcome anand"})
-})
-
 //connecting to port
 const PORT = process.env.port || 5000
 app.listen(PORT,()=>{
